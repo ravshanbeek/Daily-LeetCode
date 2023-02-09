@@ -1,6 +1,15 @@
 ﻿
 public class Solution
 {
+
+    public bool IsNumber(string s)
+    {
+        if (s == "Infinity" || s == "-Infinity" || s == "+Infinity")
+            return false;
+        if (int.TryParse(s, out int n) || double.TryParse(s, out double num))
+            return true;
+        return false;
+    }
     public int FirstMissingPositive(int[] nums)
     {
         var list = nums.OrderBy(x => x).ToList();
