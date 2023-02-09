@@ -20,6 +20,32 @@
         return list.ToArray();
     }
 
+    public int[] Intersect(int[] nums1, int[] nums2)
+    {
+        var list = new List<int>();
+        var dict = new Dictionary<int, int>();
+
+        foreach(var i in nums1)
+        {
+            if(!dict.ContainsKey(i))
+                dict.Add(i, 0);
+            dict[i]++;
+        }
+
+        foreach(var i in nums2)
+        {
+            if(dict.ContainsKey(i))
+            {
+                if (dict[i] > 0)
+                {
+                    list.Add(i);
+                    dict[i]--;
+                }
+            }
+        }
+        return list.ToArray();
+    }
+
     public int MajorityElement(int[] nums)
     {
         var dict = new Dictionary<int, int>();
