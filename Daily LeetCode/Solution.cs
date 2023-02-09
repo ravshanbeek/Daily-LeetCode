@@ -1,5 +1,50 @@
-﻿public class Solution
+﻿
+public class Solution
 {
+    public int FirstMissingPositive(int[] nums)
+    {
+        var list = nums.OrderBy(x => x).ToList();
+
+        if (!list.Contains(1))
+            return 1;
+
+        var k = list.SkipWhile(x => x <= 0).ToList();
+
+        for(int i = 0; i < k.Count - 1; i++)
+        {
+            if (k[i+1] - k[i] > 1)
+                return k[i]+1;
+        }
+
+        return k[k.Count-1] + 1;
+    }
+
+    public int ThirdMax(int[] nums)
+    {
+        var list = nums.OrderByDescending(x => x).Distinct().ToList();
+                
+        if(list.Count < 3)
+            return list[0];
+        
+        return list[2];
+    }
+
+    public char FindTheDifference(string s, string t)
+    {
+        var s1 = s.OrderBy(x => x).ToArray();
+        var s2 = t.OrderBy(x => x).ToArray();
+
+        for(int i = 0; i < s.Length; i ++)
+        {
+            if (s1[i] != s2[i])
+            {
+                Console.WriteLine(s2[i]);
+                return s2[i];
+            }
+        }
+
+        return s2[s2.Length-1];
+    }
     public int[] Intersection(int[] nums1, int[] nums2)
     {
         var list = new List<int>();
@@ -214,3 +259,4 @@
     }
 
 }
+
