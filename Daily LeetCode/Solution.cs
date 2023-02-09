@@ -1,5 +1,51 @@
 ﻿public class Solution
 {
+    public int[] Intersection(int[] nums1, int[] nums2)
+    {
+        var list = new List<int>();
+        var set = new HashSet<int>();
+
+        foreach(var i in nums1)
+        {
+            if(!set.Contains(i))
+                set.Add(i);
+        }
+        nums2 = nums2.Distinct().ToArray();
+
+        foreach(var i in nums2)
+        {
+            if(set.Contains(i))
+                list.Add(i);
+        }
+        return list.ToArray();
+    }
+
+    public int MajorityElement(int[] nums)
+    {
+        var dict = new Dictionary<int, int>();
+
+        int half = nums.Length / 2;
+
+        foreach(var i in nums)
+        {
+            if(!dict.ContainsKey(i))
+                dict.Add(i, 0);
+            dict[i] ++;
+        }
+
+        int max = 0;
+        int index = 0;
+
+        foreach(var i in nums)
+        {
+            if (dict[i] > max)
+            {
+                max = dict[i];
+                index = i;
+            }
+        }
+        return index;
+    }
     public int[] BuildArray(int[] nums)
     {
         int[] arr = new int[nums.Length];
@@ -134,6 +180,11 @@
             list[i] = (list[i - 3] + list[i - 1] + list[i - 2]);
         }
         return list[n];
+    }
+
+    public bool IsLeapYear(int year)
+    {
+        return year % 400 == 0 || (year % 100 != 0 && year % 4 == 0);
     }
 
 }
