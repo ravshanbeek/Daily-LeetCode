@@ -1,6 +1,11 @@
 ﻿
 public class Solution
 {
+    public int LengthOfLastWord(string s)
+    {
+        string str = s.Trim();
+        return str.Length - str.LastIndexOf(' ') - 1;
+    }
 
     public bool IsNumber(string s)
     {
