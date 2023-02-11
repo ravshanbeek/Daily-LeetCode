@@ -1,6 +1,34 @@
 ﻿
 public class Solution
 {
+    public int CountPrimes(int n)
+    {
+        if(n <= 2) return 0;
+
+        List<int> list = new List<int>();
+
+        list.Add(2);
+
+        bool isPrime = false;
+        for(int i = 3; i < n; i+=2)
+        {
+            isPrime = true;  
+            foreach(int j in list)
+            {
+                if (j > Math.Sqrt(i))
+                    break;
+                if(i%j==0)
+                {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if(isPrime) 
+                list.Add(i);
+        }
+        return list.Count;
+    }
+
     public int Fib(int n)
     {
         if (n == 0) return 0;
