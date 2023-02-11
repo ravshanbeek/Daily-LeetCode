@@ -1,5 +1,4 @@
-﻿
-public class Solution
+﻿public class Solution
 {
     public int CountPrimes(int n)
     {
@@ -28,7 +27,6 @@ public class Solution
         }
         return list.Count;
     }
-
     public int Fib(int n)
     {
         if (n == 0) return 0;
@@ -50,7 +48,6 @@ public class Solution
         string str = s.Trim();
         return str.Length - str.LastIndexOf(' ') - 1;
     }
-
     public bool IsNumber(string s)
     {
         if (s == "Infinity" || s == "-Infinity" || s == "+Infinity")
@@ -76,7 +73,6 @@ public class Solution
 
         return k[k.Count-1] + 1;
     }
-
     public int ThirdMax(int[] nums)
     {
         var list = nums.OrderByDescending(x => x).Distinct().ToList();
@@ -86,7 +82,6 @@ public class Solution
         
         return list[2];
     }
-
     public char FindTheDifference(string s, string t)
     {
         var s1 = s.OrderBy(x => x).ToArray();
@@ -122,7 +117,6 @@ public class Solution
         }
         return list.ToArray();
     }
-
     public int[] Intersect(int[] nums1, int[] nums2)
     {
         var list = new List<int>();
@@ -148,7 +142,6 @@ public class Solution
         }
         return list.ToArray();
     }
-
     public int MajorityElement(int[] nums)
     {
         var dict = new Dictionary<int, int>();
@@ -186,7 +179,6 @@ public class Solution
 
         return arr;
     }
-
     public int[] GetConcatenation(int[] nums)
     {
         int length = nums.Length;
@@ -199,8 +191,6 @@ public class Solution
         }
         return arr;
     }
-    
-
     public int[] Shuffle(int[] nums, int n)
     {
         int[] arr = new int[2*n];
@@ -213,7 +203,6 @@ public class Solution
 
         return arr;
     }
-
     public int ArrangeCoins(int n)
     {
         int sum = 0;
@@ -227,7 +216,6 @@ public class Solution
         }
         return count;
     }
-
     public int MinimumSum(int num)
     {
         var arr = new int[4];
@@ -240,7 +228,6 @@ public class Solution
         arr = arr.OrderBy(x => x).ToArray();
         return arr[0] * 10 + arr[3] + arr[1]*10 + arr[2];
     }
-    
     public int[] PivotArray(int[] nums, int pivot)
     {
         int left = 0, right = nums.Length - 1;
@@ -267,7 +254,6 @@ public class Solution
         }
         return nums;
     }
-
     public int[] Sort(int[] arr)
     {
         for (int i = 0; i < arr.Length - 1; i++)
@@ -285,13 +271,10 @@ public class Solution
 
         return arr;
     }
-    
-    
     public bool IsStrictlyPalindromic(int n)
     {
         return n==0||n==1;
     }
-
     public int Tribonacci(int n)
     {
         if (n == 0)
@@ -310,11 +293,8 @@ public class Solution
         }
         return list[n];
     }
-
     public bool IsLeapYear(int year)
     {
         return year % 400 == 0 || (year % 100 != 0 && year % 4 == 0);
     }
-
 }
-
