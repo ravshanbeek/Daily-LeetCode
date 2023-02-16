@@ -1,5 +1,50 @@
 ﻿public class Solution
 {
+    public int Divide(int dividend, int divisor)
+    {
+        bool isMinus = false;
+        int result = 0;
+
+        if (dividend * divisor < 0)
+        {
+            isMinus = true;
+        }
+        dividend = Math.Abs(dividend);
+        divisor = Math.Abs(divisor);
+
+        while (dividend >= divisor)
+        {
+            dividend -= divisor;
+            result++;
+        }
+
+        if (isMinus)
+            return -result;
+
+        return result;
+    }
+    public int FindContentChildren(int[] g, int[] s)
+    {
+        int count = 0,j = 0, i = 0;
+
+        Array.Sort(s);
+        Array.Sort(g);
+
+        while(i < g.Length && j < s.Length)
+        {
+            if (s[j] >= g[i])
+            {
+                j++;
+                count++;
+                i++;
+            }
+            else
+            {
+                j++;
+            }
+        }
+        return count;
+    }
     public int CountPrimes(int n)
     {
         if(n <= 2) return 0;
