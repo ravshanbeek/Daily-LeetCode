@@ -1,5 +1,21 @@
 ﻿public class Solution
 {
+    int max = 0;
+    public int MaxDepth(TreeNode root)
+    {
+        MaxDepthCount(root, 1);
+        return max;
+    }
+    private void MaxDepthCount(TreeNode root,int CurrentNode)
+    {
+        if(root == null) return;
+
+        if(max < CurrentNode)
+            max = CurrentNode;
+
+        MaxDepthCount(root.left, CurrentNode + 1);
+        MaxDepthCount(root.right, CurrentNode + 1);
+    }
     public int Divide(int dividend, int divisor)
     {
         bool isMinus = false;
@@ -341,5 +357,20 @@
     public bool IsLeapYear(int year)
     {
         return year % 400 == 0 || (year % 100 != 0 && year % 4 == 0);
+    }
+}
+
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int val = 0, 
+        TreeNode left = null,
+        TreeNode right = null)
+    {
+        this.val = val;
+        this.left = left;
+        this.right = right;    
     }
 }
