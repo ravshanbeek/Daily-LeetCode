@@ -1,6 +1,51 @@
-﻿public class Solution
+﻿using System.Collections.Generic;
+
+public class Solution
 {
     int max = 0;
+    public IList<int> InorderTraversal(TreeNode root, List<int> list = null)
+    {
+        if (list == null)
+            list = new List<int>();
+
+        if (root is null)
+            return list;
+
+        if (root.left is not null)
+        {
+            InorderTraversal(root.left, list);
+        }
+
+        list.Add(root.val);
+
+        if (root.right is not null)
+        {
+            InorderTraversal(root.right, list);
+        }
+
+        return list;
+    }
+    public IList<int> PreorderTraversal(TreeNode root, List<int> result = null)
+    {
+        if (result == null)
+            result = new List<int>();
+
+        if (root is null)
+            return result;
+
+        if(root.left != null)
+        {
+            result.Add(root.left.val);
+            PreorderTraversal(root.left);
+        }
+        if (root.right != null)
+        {
+            result.Add(root.right.val);
+            PreorderTraversal(root.right);
+        }
+
+        return result;
+    }
     public int MaxDepth(TreeNode root)
     {
         MaxDepthCount(root, 1);
