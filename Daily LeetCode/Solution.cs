@@ -3,6 +3,29 @@
 public class Solution
 {
     int max = 0;
+    IList<int> list = new List<int>();
+    public int MinDiffInBST(TreeNode root)
+    {
+        int min = int.MaxValue;
+        InorderTraversal(root);
+
+        var diff = int.MaxValue;
+        for (int i = 0; i < list.Count - 1; i++)
+        {
+            diff = Math.Min(diff, Math.Abs(list[i] - list[i + 1]));
+        }
+
+        return diff;
+    }
+    private void InorderTraversal(TreeNode root)
+    {
+        if(root == null) return;
+
+        InorderTraversal(root.left);
+
+        list.Add(root.val);
+        InorderTraversal(root.right);
+    }
     public IList<int> InorderTraversal(TreeNode root, List<int> list = null)
     {
         if (list == null)
